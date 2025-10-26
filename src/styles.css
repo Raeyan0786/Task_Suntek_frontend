@@ -1,0 +1,4 @@
+@import 'tailwindcss';
+
+/* small helpers */
+.app-shell { @apply min-h-screen bg-slate-50 text-slate-900; }
