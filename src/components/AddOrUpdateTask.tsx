@@ -121,13 +121,13 @@ const  AddOrUpdateTask: FC<PropsType> = ({
               </svg>
             </div>
           ) : (
-            <Button className="w-fit px-5 cursor-pointer">Add User</Button>
+            <Button className="w-fit px-5 cursor-pointer">Add Task</Button>
           )}
         </DialogTrigger>
         <DialogContent className="mb-[10]   max-h-[40.6875rem]  lg:max-w-[35rem] p-0">
           <DialogHeader className="border-lightGray bg-cultured h-[3.875rem] rounded-t-lg border-b text-left justify-center ">
             <DialogTitle className=" lg:p-[1.56rem] text-lg font-semibold leading-5 px-2">
-              {isUpdate ? "Edit User" : "Add New User"}
+              {isUpdate ? "Edit Task" : "Add New Task"}
             </DialogTitle>
           </DialogHeader>
           <div className="p-8">
