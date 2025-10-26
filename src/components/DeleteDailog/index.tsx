@@ -22,7 +22,7 @@ const DeleteDailog = ({handleDelete}:DeleteType) => {
               <div className="  flex items-center justify-center p-4">
           <div className=" p-6 max-w-sm w-full">
             <h2 className="text-xl font-semibold mb-4">Are you sure?</h2>
-            <p className="text-gray-600 mb-6">You will not be able to recover the employee!</p>
+            <p className="text-gray-600 mb-6">You will not be able to recover the task!</p>
             <div className="flex justify-end space-x-4">
               <button
                 onClick={()=>setIsDelete(false)}
