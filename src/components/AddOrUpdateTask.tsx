@@ -177,7 +177,7 @@ const  AddOrUpdateTask: FC<PropsType> = ({
                   )}
                 </div>
 
-                <Button className="w-full">{editorTriggertext}</Button>
+                <Button className="w-full cursor-pointer">{editorTriggertext}</Button>
               </div>
             </form>
           </div>
