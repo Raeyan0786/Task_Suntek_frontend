@@ -1,6 +1,7 @@
 import {  useEffect, useState, type FC } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
+  import toast from "react-hot-toast";
 import {
   Dialog,
   DialogContent,
@@ -39,7 +40,7 @@ const  AddOrUpdateTask: FC<PropsType> = ({
 //   refetch,
 }: PropsType) => {
   const [isOpen, setIsOpen] = useState(false);
-  const editorTriggertext = `${isUpdate ? "Edit User" : "Add User"}`;
+  const editorTriggertext = `${isUpdate ? "Edit Task" : "Add Task"}`;
   const {
       fetchTasks,
       fetchSummary,
@@ -59,25 +60,30 @@ const  AddOrUpdateTask: FC<PropsType> = ({
     },
   });
 
-  const onSubmit = async(data: any) => {
-    if (isUpdate === false) {
-      const obj = {
-        title:data.title,
-        description:data.description
-      };
-      await api.post('/tasks', obj)
-    //   AddUser(obj);
-    } else if (isUpdate === true) {
-      const obj = {
-        title:data.title,
-        description:data.description
-      };
-      await api.put(`/tasks/${taskData?._id}`, obj)
+  const onSubmit = async (data: any) => {
+  try {
+    const obj = {
+      title: data.title,
+      description: data.description,
+    };
+
+    if (!isUpdate) {
+      await api.post("/tasks", obj);
+      toast.success("✅ Task added successfully!");
+    } else {
+      await api.put(`/tasks/${taskData?._id}`, obj);
+      toast.success("✅ Task updated successfully!");
     }
-  await  fetchTasks()
-  await  fetchSummary();
-    setIsOpen(false)
-  };
+
+    await fetchTasks();
+    await fetchSummary();
+    setIsOpen(false);
+  } catch (error: any) {
+    const message =
+      error.response?.data?.message || "Something went wrong. Please try again.";
+    toast.error(message);
+  }
+};
 
   useEffect(() => {
     if (isUpdate === true && taskData) {
