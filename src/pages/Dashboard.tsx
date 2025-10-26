@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import TasksPage from './TasksPage';
 import SummaryPage from './SummaryPage';
 import { useAuthStore } from '../stores/auth';

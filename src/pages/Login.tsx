@@ -37,18 +37,13 @@ const validationSchema = yup.object().shape({
 
 export default function Login() {
   const setAuth = useAuthStore((s) => s.setAuth);
-  const [isPending, startTransition] = React.useTransition();
   const [passwordType, setPasswordType] = useState("password");
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  const [err, setErr] = useState("");
   const nav = useNavigate();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-    getValues,
   } = useForm({
     resolver: yupResolver(validationSchema),
     mode: "all",
@@ -60,17 +55,6 @@ export default function Login() {
     );
   };
 
-  // const onSubmit = async (e: React.FormEvent) => {
-  //   e.preventDefault()
-  //   try{
-  //     const res = await api.post('/auth/login', { email, password })
-  //     setAuth(res.data.accessToken, res.data.user)
-  //     nav('/')
-  //   }catch(err: any){
-  //     setErr(err?.response?.data?.message || 'Login failed')
-  //   }
-  // }
-
   const onSubmit = async (data: LoginAuthType) => {
     console.log("data",data)
       try{
@@ -78,8 +62,7 @@ export default function Login() {
       setAuth(res.data.accessToken, res.data.user)
       nav('/')
     }catch(err: any){
-      setErr(err?.response?.data?.message || 'Login failed')
-      toast.error("An error occurred. Please try again.");
+      toast.error(err?.response?.data?.message);
     }
   };
 
@@ -114,7 +97,7 @@ export default function Login() {
                         Email
                       </Label>
                       <Input
-                        disabled={isPending}
+                      
                         {...register("email")}
                         type="email"
                         id="email"
@@ -153,7 +136,6 @@ export default function Login() {
                         <Input
                           type={passwordType}
                           id="password"
-                          disabled={isPending}
                           {...register("password")}
                           className={cn("pr-10", {
                             "border-destructive": errors.password,
@@ -186,11 +168,8 @@ export default function Login() {
                   </div>
 
                   {/* Submit Button */}
-                  <Button className="w-full mt-4 cursor-pointer" disabled={isPending}>
-                    {isPending && (
-                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    )}
-                    {isPending ? "Signing In..." : "Sign In"}
+                  <Button className="w-full mt-4 cursor-pointer">
+                Sign In
                   </Button>
                 </form>
 

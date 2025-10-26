@@ -1,4 +1,4 @@
-import React, {  useEffect, useMemo, useState, type FC } from "react";
+import {  useEffect, useState, type FC } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import {
@@ -49,8 +49,6 @@ const  AddOrUpdateTask: FC<PropsType> = ({
     handleSubmit,
     setValue,
     reset,
-    getValues,
-    watch,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(validationSchema),
@@ -60,18 +58,6 @@ const  AddOrUpdateTask: FC<PropsType> = ({
       description:""
     },
   });
-
-  // Handlers
-  const handleAdd = async (title: string) => {
-    await api.post('/tasks', { title })
-    fetchTasks()
-  }
-
-  const handleEdit = async (task: any) => {
-    await api.put(`/tasks/${task._id}`, task)
-    fetchTasks();
-    fetchSummary();
-  }
 
   const onSubmit = async(data: any) => {
     if (isUpdate === false) {

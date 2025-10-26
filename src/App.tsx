@@ -7,7 +7,7 @@ import { useAuthStore } from './stores/auth'
 import { Toaster } from 'react-hot-toast'
 import './index.css'
 
-const ProtectedRoute: React.FC<{children: JSX.Element}> = ({ children }) => {
+const ProtectedRoute: React.FC<{children: React.ReactNode}> = ({ children }) => {
   const token = useAuthStore(s => s.token)
   if (!token) return <Navigate to='/login' replace />
   return children

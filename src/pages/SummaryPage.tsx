@@ -1,4 +1,3 @@
-import React from 'react'
 import { useTaskStore } from '../stores/taskStore'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
