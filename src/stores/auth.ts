@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { clearToken, getToken, setLocalStorage, getUser } from '../utils/auth'
+import { clearToken, getToken, setLocalStorage } from '../utils/auth'
 
 type User = any // replace 'any' with your actual user type if available
 
@@ -12,10 +12,10 @@ interface AuthState {
 
 export const useAuthStore = create<AuthState>((set) => ({
   token: getToken() || null,
-  user: getUser() || null,
+  user:  null,
   setAuth: (token, user) => {
     setLocalStorage("tt_auth_token",token)
-    setLocalStorage("user",user)
+    setLocalStorage("user",user.id)
     set({ token, user })
   },
   logout: () => {

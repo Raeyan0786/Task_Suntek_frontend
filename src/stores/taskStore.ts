@@ -123,7 +123,6 @@ export const useTaskStore = create<TaskStore>((set, get) => ({
   initSocket() {
     const token = getToken()
     const user= getUser()
-    console.log("user",user)
 
     if (!token || !user) return
     

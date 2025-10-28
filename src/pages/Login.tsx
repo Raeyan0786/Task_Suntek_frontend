@@ -57,8 +57,8 @@ export default function Login() {
   const onSubmit = async (data: LoginAuthType) => {
     console.log("data",data)
       try{
-      const res = await api.post('/auth/login', { email:data.email, password:data.password })
-      setAuth(res.data.accessToken, res.data.user.id)
+      const res = await api.post('/auth/login', { email:data.email.toLowerCase(), password:data.password })
+      setAuth(res.data.accessToken, res.data.user)
       nav('/')
     }catch(err: any){
       toast.error(err?.response?.data?.message);
