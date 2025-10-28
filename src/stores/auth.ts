@@ -14,6 +14,7 @@ export const useAuthStore = create<AuthState>((set) => ({
   token: getToken() || null,
   user: getUser() || null,
   setAuth: (token, user) => {
+    setLocalStorage("tt_auth_token",token)
     setLocalStorage("user",user)
     set({ token, user })
   },

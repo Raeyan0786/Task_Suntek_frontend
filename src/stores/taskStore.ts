@@ -122,8 +122,7 @@ export const useTaskStore = create<TaskStore>((set, get) => ({
 
   initSocket() {
     const token = getToken()
-    // const { user } = useAuthStore.getState()
-    const user= getUser();
+    const user= getUser()
     console.log("user",user)
 
     if (!token || !user) return
