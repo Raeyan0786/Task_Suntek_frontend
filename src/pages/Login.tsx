@@ -58,7 +58,7 @@ export default function Login() {
     console.log("data",data)
       try{
       const res = await api.post('/auth/login', { email:data.email, password:data.password })
-      setAuth(res.data.accessToken, res.data.user)
+      setAuth(res.data.accessToken, res.data.user.id)
       nav('/')
     }catch(err: any){
       toast.error(err?.response?.data?.message);
