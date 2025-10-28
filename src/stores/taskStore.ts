@@ -2,7 +2,7 @@
 import { create } from 'zustand'
 import api from '../api/client'
 import { io, Socket } from 'socket.io-client'
-import { getToken } from '../utils/auth'
+import { getToken, getUser } from '../utils/auth'
 import { useAuthStore } from './auth'
 
 export type TimeLog = {
@@ -122,7 +122,8 @@ export const useTaskStore = create<TaskStore>((set, get) => ({
 
   initSocket() {
     const token = getToken()
-    const { user } = useAuthStore.getState()
+    // const { user } = useAuthStore.getState()
+    const user= getUser();
     console.log("user",user)
 
     if (!token || !user) return
@@ -134,7 +135,7 @@ export const useTaskStore = create<TaskStore>((set, get) => ({
 
     socket.on('connect', () => {
       console.log('✅ Socket connected')
-      socket.emit('join', `user:${user.id}`)
+      socket.emit('join', `user:${user}`)
     })
 
     socket.on('timer:started', (log: TimeLog) => {
