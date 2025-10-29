@@ -120,14 +120,6 @@ export default function Login() {
                           className="mb-2 block font-bold text-default-600"
                         >
                           Password
-                        </Label>
-                        <div className="mb-2 text-right">
-                          <Link
-                            to="/auth/Recover"
-                            className="text-sm text-[#97A4AF] border-b border-dashed border-[#97a4af]"
-                          >
-                            Forgot Password?
-                          </Link>
                         </div>
                       </div>
 

@@ -1,5 +1,6 @@
 import axios, { type InternalAxiosRequestConfig, type AxiosError } from 'axios';
-import { getToken, clearToken } from '../utils/auth'; // ensure clearToken removes token from storage
+import { navigateTo } from '@/utils/history';
+import { getToken, clearToken } from '../utils/auth';
 
 const api = axios.create({
   // baseURL: 'http://localhost:4000/api',
@@ -29,7 +30,7 @@ api.interceptors.response.use(
       console.warn('Token expired or invalid, clearing session...');
 
       clearToken(); 
-      window.location.href = '/login';
+      navigateTo('/login')
     }
 
     return Promise.reject(error);
