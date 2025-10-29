@@ -3,7 +3,6 @@ import { create } from 'zustand'
 import api from '../api/client'
 import { io, Socket } from 'socket.io-client'
 import { getToken, getUser } from '../utils/auth'
-import { useAuthStore } from './auth'
 
 export type TimeLog = {
   _id: string
