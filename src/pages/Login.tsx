@@ -120,7 +120,7 @@ export default function Login() {
                           className="mb-2 block font-bold text-default-600"
                         >
                           Password
-                        </div>
+                        </Label>
                       </div>
 
                       <div className="relative">
