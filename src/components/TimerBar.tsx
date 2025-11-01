@@ -13,7 +13,6 @@ export default function TimerBar({ activeLog }: { activeLog: any }) {
       setElapsed(Math.floor((now - start) / 1000))
     }
 
-    tick()
     const interval = setInterval(tick, 1000)
 
     return () => clearInterval(interval)

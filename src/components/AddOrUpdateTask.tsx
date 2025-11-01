@@ -23,10 +23,10 @@ import { useTaskStore, type Task } from "@/stores/taskStore";
 const validationSchema = yup.object().shape({
   title: yup
     .string()
-    .required("Email is required"),
+    .required("Title is required"),
   description: yup
     .string()
-    .required("Enter your Name")
+    .required("Description is required")
 });
 
 type PropsType = {
